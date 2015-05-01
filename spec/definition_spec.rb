@@ -17,7 +17,20 @@ describe(Definition) do
     end
   end
 
-  describe("#save") do
-    it("adds a definition and word pair to an array of word/definition pairs")
+  describe(".all") do
+    it("returns all words and definitions, should be empty at first") do
+      some_word = Definition.new('conflagration')
+      expect(Definition.all()).to(eq([]))
+    end
   end
+
+    describe("#save") do
+      it("adds a definition and word pair to an array of word/definition pairs") do
+        some_word = Definition.new('conflagration')
+        some_word.add_def('a great big fire')
+        some_word.add_def('a small fire')
+        some_word.save()
+        expect(Definition.all()).to(eq([['conflagration', 'a great big fire'], ['conflagration', 'a small fire']]))
+      end
+    end
 end
