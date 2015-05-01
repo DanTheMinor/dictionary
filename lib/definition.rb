@@ -21,4 +21,19 @@ class Definition
   define_singleton_method(:all) do
     @@word_def
   end
+
+  define_singleton_method(:clear) do
+    @@word_def = []
+  end
+
+  define_singleton_method(:word_def) do |word_find|
+    defs_to_return = []
+    @@word_def.each do |word, definition|
+      if word_find == word
+        defs_to_return.push(definition)
+      end
+    end
+    return defs_to_return 
+  end
+
 end
