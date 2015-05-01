@@ -4,6 +4,7 @@ class Word
 
   define_method(:initialize) do |word|
     @word = word
+    @definitions = []
   end
 
   define_singleton_method(:all) do

@@ -1,10 +1,10 @@
 class Definition
   @@word_def = [] #two dimensional array of words and their definitions
-  attr_reader(:word, :definitions)
+  attr_reader(:word, :definition)
 
-  define_method(:initialize) do |word|
-    @word = word #this is sort've in place of an ID
-    @definitions = []
+  define_method(:initialize) do |word, definition|
+    @word = word
+    @definition = definition
   end
 
   define_method(:add_def) do |definition|
@@ -12,10 +12,7 @@ class Definition
   end
 
   define_method(:save) do
-    word = self.word()
-    @definitions.each do |definition|
-      @@word_def.push([word, definition])
-    end
+      @@word_def.push([@word, @definition])
   end
 
   define_singleton_method(:all) do
