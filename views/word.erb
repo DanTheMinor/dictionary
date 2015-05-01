@@ -1,11 +1,11 @@
 <h1>Here are the definitions for your word </h1>
 <ul>
   <% @word.definitions().each do |definition| %>
-    <li><a href="/definitions/<%= definition.id%>"><%=definition.definition() %></a></li>
+    <li><%=definition %></li>
 
   <% end %>
 </ul>
 
-<a href="/words/<%=@word.id%>/definition/new">Add a new definition</a>
+<a href='/words/<%=@word.id%>/definitions/new'>Add a new definition</a>
 
 <a href="/">Return Home</a>

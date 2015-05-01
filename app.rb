@@ -28,16 +28,24 @@ end
 
 get('/definitions/:id') do
   @definition = Definition.find(params.fetch('id'))
-  erb(:vehicle)
+  erb(:definitions)
 end
 
 get('/words/:id') do
   @word = Word.find(params.fetch('id').to_i())
-  binding.pry
   erb(:word)
 end
 
-get('/words/id:/definitions/new') do
-  @dealership = Dealership.find(params.fetch('id').to_i())
-  erb(:word_definition_form)
+get('/words/:id/definitions/new') do
+  @word = Word.find(params.fetch('id').to_i())
+  erb(:word_definitions_form)
+end
+
+post('/definitions') do
+  definition = params.fetch("definition")
+  @definition = Definition.new(definition)
+  @definition.save()
+  @word = Word.find(params.fetch('word_id').to_i())
+  @word.add_def(@definition)
+  erb(:success)
 end
