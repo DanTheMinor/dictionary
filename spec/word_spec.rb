@@ -45,4 +45,14 @@ describe(Word) do
         expect(Word.all()).to(eq([]))
       end
     end
+
+    describe('.find_word') do
+      it("finds a word object based on the word") do
+        a_word = Word.new('conflagration')
+        a_word.save()
+        b_word = Word.new('tsunami')
+        b_word.save()
+        expect(Word.find_word('tsunami')).to(eq(b_word))
+      end
+    end
 end

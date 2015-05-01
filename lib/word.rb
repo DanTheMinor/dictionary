@@ -23,4 +23,14 @@ class Word
     @@all_words = []
   end
 
+  define_singleton_method(:find_word) do |word_find|
+    found_word = nil
+    @@all_words.each do |word|
+      if word.word() == word_find
+        found_word = word
+      end
+    end
+    return found_word
+  end
+
 end
