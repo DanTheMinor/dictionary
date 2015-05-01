@@ -9,7 +9,7 @@ describe(Word) do
   before() do
     Word.clear()
   end
-  
+
   describe('#word') do
       it('returns the word of a given word object') do
           a_word = Word.new('conflagration')
@@ -47,6 +47,16 @@ describe(Word) do
         a_word.save()
         Word.clear()
         expect(Word.all()).to(eq([]))
+      end
+    end
+
+    describe(".find") do
+      it('finds a word by its id number and returns it') do
+        a_word = Word.new('conflagration')
+        a_word.save()
+        b_word = Word.new('tsunami')
+        b_word.save()
+        expect(Word.find(a_word.id)).to(eq(a_word))
       end
     end
 
