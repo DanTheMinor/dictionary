@@ -20,5 +20,12 @@ describe(Word) do
       end
     end
 
+    describe('#save') do
+      it("saves a word to the list of words") do
+          a_word = Word.new('conflagration')
+          a_word.save()
+          expect(Word.all()).to(eq([a_word]))
+      end
+    end
 
 end

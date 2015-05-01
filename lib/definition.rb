@@ -3,7 +3,7 @@ class Definition
   attr_reader(:word, :definitions)
 
   define_method(:initialize) do |word|
-    @word = word
+    @word = word #this is sort've in place of an ID
     @definitions = []
   end
 
@@ -33,7 +33,7 @@ class Definition
         defs_to_return.push(definition)
       end
     end
-    return defs_to_return 
+    return defs_to_return
   end
 
 end
