@@ -1,9 +1,8 @@
 class Definition
   @@all_def = [] #two dimensional array of words and their definitions
-  attr_reader(:word, :definition, :id)
+  attr_reader(:definition, :id)
 
-  define_method(:initialize) do |word, definition|
-    @word = word
+  define_method(:initialize) do |definition|
     @definition = definition
     @id = @@all_def.length() + 1
   end

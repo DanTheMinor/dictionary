@@ -26,6 +26,18 @@ post('/words') do
   erb(:success)
 end
 
-get('/words/:word') do
-  @definition = Definition.find()
+get('/definitions/:id') do
+  @definition = Definition.find(params.fetch('id'))
+  erb(:vehicle)
+end
+
+get('/words/:id') do
+  @word = Word.find(params.fetch('id').to_i())
+  binding.pry
+  erb(:word)
+end
+
+get('/words/id:/definitions/new') do
+  @dealership = Dealership.find(params.fetch('id').to_i())
+  erb(:word_definition_form)
 end
