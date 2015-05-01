@@ -25,3 +25,7 @@ post('/words') do
   @words = Word.all()
   erb(:success)
 end
+
+get('/words/:word') do
+  @definition = Definition.find()
+end

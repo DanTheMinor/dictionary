@@ -6,6 +6,10 @@ require('definition')
 #rspec spec/word_spec.rb
 
 describe(Word) do
+  before() do
+    Word.clear()
+  end
+  
   describe('#word') do
       it('returns the word of a given word object') do
           a_word = Word.new('conflagration')

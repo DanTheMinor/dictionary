@@ -2,6 +2,10 @@ require('rspec')
 require('definition')
 
 describe(Definition) do
+  before() do
+    Definition.clear()
+  end
+
   describe("#definitions") do
     it("returns the definition of a definition object") do
       some_word = Definition.new('conflagration', 'a great big fire')
@@ -17,12 +21,12 @@ describe(Definition) do
   end
 
     describe("#save") do
-      it("adds a definition and word pair to an array of word/definition pairs") do
+      it("adds a definition to a list of all definitions") do
         some_word = Definition.new('conflagration', 'a great big fire')
         another_word = Definition.new('tsunami', 'a big wave')
         some_word.save()
         another_word.save()
-        expect(Definition.all()).to(eq([['conflagration', 'a great big fire'], ['tsunami', 'a big wave']]))
+        expect(Definition.all()).to(eq([some_word, another_word]))
       end
     end
 
@@ -35,15 +39,13 @@ describe(Definition) do
       end
     end
 
-    describe(".word_def") do
-      it("returns an array of all definitions of a particular word") do
-          some_word = Definition.new('conflagration', 'a great big fire')
-          another_word = Definition.new('tsunami', 'a big wave')
-          some_word2 = Definition.new('conflagration','some big flames')
-          some_word.save()
-          another_word.save()
-          some_word2.save()
-          expect(Definition.word_def('conflagration')).to(eq(['a great big fire', 'some big flames']))
+    describe(".find") do
+      it("returns a definition object matching the definition ID") do
+        some_def = Definition.new('conflagration', 'a great big fire')
+        some_def.save()
+        some_def2 = Definition.new('tsunami', 'a big wave')
+        some_def.save()
+        expect(Definition.find(some_def.id()))
       end
     end
 end
