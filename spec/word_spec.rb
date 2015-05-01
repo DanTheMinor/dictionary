@@ -28,6 +28,21 @@ describe(Word) do
       end
     end
 
-    
+    describe('#add_def') do
+      it("adds a definition to a particular word object") do
+        a_word = Word.new('conflagration')
+        a_def = Definition.new('conflagration', 'a great big fire')
+        a_word.add_def(a_def)
+        expect(a_word.definitions()).to(eq(['a great big fire']))
+      end
+    end
 
+    describe('.clear') do
+      it("clears the all_words array of any word objects") do
+        a_word = Word.new('conflagration')
+        a_word.save()
+        Word.clear()
+        expect(Word.all()).to(eq([]))
+      end
+    end
 end
