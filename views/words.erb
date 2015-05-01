@@ -1,0 +1,10 @@
+<h1>Words: </h1>
+
+<h3>The Current list of Words:</h3>
+<ul>
+  <% @words.each() do |word| %>
+  <li> <a href="/words/<%= word.word() %>"><%= word.word() %></a></li>
+  <% end %>
+</ul>
+
+<a href="/">Go Back to Main Page</a>
